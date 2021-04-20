@@ -1,6 +1,7 @@
 import discord
 from TOKEN import TOKEN
 import os
+import textwrap
 
 client = discord.Client()
 
@@ -41,6 +42,7 @@ async def on_message(message):
             text = open(message.content[5:], "r").read()
         except FileNotFoundError:
             await message.channel.send("ERROR: invalid file name")
+        text = f"```\n{text}\n```"
         await pager(text, message.channel.send)
 
 client.run(TOKEN)
