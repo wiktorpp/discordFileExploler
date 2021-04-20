@@ -34,7 +34,7 @@ async def on_message(message):
         except FileNotFoundError:
             await message.channel.send("ERROR: invalid file name")
         await message.channel.send(
-            file = discord.File(file, file.name.split("/")[-1])
+            file=discord.File(file, filename=file.name.split("/")[-1])
         )
 
     if message.content.startswith("$cat"):
